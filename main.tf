@@ -1,12 +1,3 @@
-terraform {
-  cloud {
-    organization = "vlad-org"
-
-    workspaces {
-      name = "myworkspace2"
-    }
-  }
-}
 provider "aws" {
   region = "us-west-1"
   access_key = var.access_key
