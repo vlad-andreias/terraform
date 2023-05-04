@@ -4,11 +4,13 @@ provider "aws" {
   secret_key = var.secret_key
 }
 
-resource "aws_instance" "test1" {
-  ami           = "ami-0583a1f1cd3c11ebc"
-  instance_type = "t1.micro"
+module "iam-user" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-user"
+  version = "5.11.2"
+  name="my_user_created_from_module1"
 
-  tags = {
-    Name = var.instance_name
-  }
+
+}
+output user_arn {
+  value = module.iam-user.iam_user_arn
 }
